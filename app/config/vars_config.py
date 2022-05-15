@@ -2,8 +2,8 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "Awesome API"
-    ADMIN_EMAIL: str
+    APP_NAME: str
+    DEVELOPER_GITHUB_LINK: str
     SQLALCHEMY_DATABASE_URI: str
 
     class Config:

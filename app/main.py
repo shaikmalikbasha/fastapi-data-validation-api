@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.config.db_config import Base, engine
+from app.config.vars_config import settings
 from app.routes import routes_mapper
 from app.utils.constants import API_VERSION
 
@@ -16,7 +17,7 @@ async def on_startup():
 
 @app.get("/")
 async def index():
-    return {"msg": "Hello, World!"}
+    return {"msg": "Hello, World!", "appName": settings.APP_NAME}
 
 
 app.include_router(routes_mapper.router, prefix=API_VERSION)
