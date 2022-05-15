@@ -1,3 +1,5 @@
+import traceback
+
 from app.config.vars_config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -15,12 +17,10 @@ Base = declarative_base()
 
 def get_db():
     try:
-        print("Trying to get the db cursor...")
         db = SessionLocal()
         yield db
     except:
         print("Database connection failed...")
+        print(traceback.format_exc(limit=4))
     finally:
-        print("Closing the connection...")
         db.close()
-        print("Closed!")

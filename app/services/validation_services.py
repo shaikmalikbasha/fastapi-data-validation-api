@@ -2,6 +2,10 @@ from app.models.models import MdMetricInstance, MdMetricQuery, MdMetricThreshold
 
 
 class ValidationService:
+    """
+    Metrics Validation Service layer
+    """
+
     def get_all_md_instance(self, db):
         return db.query(MdMetricInstance).all()
 
