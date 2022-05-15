@@ -1,5 +1,3 @@
-from tokenize import group
-
 from app.models.models import MdMetricGroup
 from fastapi import HTTPException, status
 
