@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.config.db_config import Base
 from app.utils.constants import SUCCESS_STATUS
-from sqlalchemy import Boolean, Column, DateTime, Integer, String, Text
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 
@@ -55,6 +55,8 @@ class MdMetricGroup(Base):
     md_metric_group_name = Column(String, nullable=False, unique=True)
     is_active = Column(Boolean, default=True)
 
+    md_metric_queries = relationship("MdMetricQuery")
+
 
 class MdMetricQuery(Base):
     """
@@ -68,6 +70,7 @@ class MdMetricQuery(Base):
     md_metric_sql_query = Column(Text, nullable=False)
     md_metric_query_status = Column(String, default=SUCCESS_STATUS)
 
+    md_metric_group_id = Column(Integer, ForeignKey("md_metric_group.id"))
     md_metric_threshold = relationship(
         "MdMetricThreshold", back_populates="md_metric_query", uselist=False
     )
@@ -84,6 +87,7 @@ class MdMetricThreshold(Base):
     md_metric_threshold_action_parameters = Column(Text)
     md_metric_threshold_status = Column(String, default="ACTIVE")
 
+    md_metric_query_id = Column(Integer, ForeignKey("md_metric_query.id"))
     md_metric_query = relationship(
         "MdMetricQuery", back_populates="md_metric_threshold"
     )
