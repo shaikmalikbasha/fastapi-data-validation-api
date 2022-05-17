@@ -1,5 +1,9 @@
+from typing import List
 from app.config.db_config import get_db
-from app.schemas.metric_group_schemas import CreateAndUpdateMetricGroup
+from app.schemas.metric_group_schemas import (
+    CreateAndUpdateMetricGroup,
+    MdMetricGroupResponse,
+)
 from app.services.metric_group_service import MdMetricGroupService
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -9,7 +13,9 @@ metric_group_router = APIRouter(prefix="/groups", tags=["MD_METRIC_GROUP"])
 metric_group_service = MdMetricGroupService()
 
 
-@metric_group_router.get("/")
+@metric_group_router.get(
+    "/", response_model=List[MdMetricGroupResponse], status_code=200
+)
 async def get_all_metric_groups(db: Session = Depends(get_db)):
     return metric_group_service.find_all_metric_groups(db)
 

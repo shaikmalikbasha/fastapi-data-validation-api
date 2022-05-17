@@ -10,5 +10,7 @@ class MdMetricGroupResponse(CreateAndUpdateMetricGroup):
     id: Optional[str]
     is_active: bool
 
+    md_metric_queries: list = []
+
     class Config:
         orm_mode = True
