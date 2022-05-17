@@ -86,8 +86,8 @@ class MdMetricThreshold(Base):
     __tablename__ = "md_metric_threshold"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    md_metric_threshold_type = Column(String)
-    md_meytric_threshold_value = Column(Text)
+    md_metric_threshold_type = Column(String, nullable=False)
+    md_meytric_threshold_value = Column(Text, nullable=False)
     md_metric_threshold_failure_text = Column(Text)
     md_metric_threshold_action = Column(String)
     md_metric_threshold_action_parameters = Column(Text)
@@ -97,3 +97,6 @@ class MdMetricThreshold(Base):
     md_metric_query = relationship(
         "MdMetricQuery", back_populates="md_metric_threshold"
     )
+
+    def __repr__(self):
+        return str(self.__dict__)

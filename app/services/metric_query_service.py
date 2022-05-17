@@ -5,7 +5,7 @@ from fastapi import HTTPException, status
 
 class MdMetricQueryService:
     """
-    MdMetricGroupService is the service for MdMetricGroup Table/Entity
+    MdMetricQueryService is the service for MdMetricQuery Table/Entity
     """
 
     def save_metric_query(self, input_group, db):
