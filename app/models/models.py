@@ -57,6 +57,9 @@ class MdMetricGroup(Base):
 
     md_metric_queries = relationship("MdMetricQuery")
 
+    def __repr__(self):
+        return str(self.__dict__)
+
 
 class MdMetricQuery(Base):
     """
@@ -74,6 +77,9 @@ class MdMetricQuery(Base):
     md_metric_threshold = relationship(
         "MdMetricThreshold", back_populates="md_metric_query", uselist=False
     )
+
+    def __repr__(self):
+        return str(self.__dict__)
 
 
 class MdMetricThreshold(Base):

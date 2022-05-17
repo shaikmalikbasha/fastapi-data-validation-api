@@ -33,6 +33,7 @@ class MdMetricGroupService:
         )
         print(f"SQL QUERY: {query}")
         group = query.first()
+        print(f"MdMetricGroupResult: {group}")
         if not group:
             desc = {
                 "msg": "Invalid Input",
@@ -46,6 +47,7 @@ class MdMetricGroupService:
         query = db.query(MdMetricGroup).filter_by(id=group_id).filter_by(is_active=True)
         print(f"SQL QUERY: {query}")
         group = query.first()
+        print(f"MdMetricGroupResult: {group}")
         if not group:
             desc = {
                 "msg": "Invalid Input",
@@ -60,6 +62,7 @@ class MdMetricGroupService:
         print(f"SQL QUERY: {query}")
 
         group = query.first()
+        print(f"MdMetricGroupResult: {group}")
         if not group:
             desc = {
                 "msg": "Invalid Input",
@@ -81,6 +84,7 @@ class MdMetricGroupService:
         print(f"SQL QUERY: {query}")
 
         group = query.first()
+        print(f"MdMetricGroupResult: {group}")
         if not group:
             desc = {
                 "msg": "Invalid Input",

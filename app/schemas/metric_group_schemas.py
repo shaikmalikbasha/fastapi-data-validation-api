@@ -6,9 +6,8 @@ class CreateAndUpdateMetricGroup(BaseModel):
     md_metric_group_name: str
 
 
-class MdMetricGroupResponse(BaseModel):
+class MdMetricGroupResponse(CreateAndUpdateMetricGroup):
     id: Optional[str]
-    md_metric_group_name: str
     is_active: bool
 
     class Config:
