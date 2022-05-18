@@ -12,7 +12,7 @@ class CreateAndUpdateMetricQuery(BaseModel):
 
 
 class MetricQueryResponse(CreateAndUpdateMetricQuery):
-    id: str
+    id: Optional[int]
     md_metric_threshold: Any
 
     class Config:

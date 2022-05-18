@@ -10,7 +10,7 @@ class MdMetricThresholdService:
     def save_metric_threshold(self, input_body, db):
         new_query = MdMetricThreshold(
             md_metric_threshold_type=input_body["md_metric_threshold_type"],
-            md_meytric_threshold_value=input_body["md_meytric_threshold_value"],
+            md_metric_threshold_value=input_body["md_metric_threshold_value"],
             md_metric_threshold_failure_text=input_body[
                 "md_metric_threshold_failure_text"
             ],

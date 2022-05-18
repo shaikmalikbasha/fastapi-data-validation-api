@@ -7,7 +7,7 @@ class CreateAndUpdateMetricGroup(BaseModel):
 
 
 class MdMetricGroupResponse(CreateAndUpdateMetricGroup):
-    id: Optional[str]
+    id: Optional[int]
     is_active: bool
 
     md_metric_queries: list = []

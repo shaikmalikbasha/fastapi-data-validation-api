@@ -87,7 +87,7 @@ class MdMetricThreshold(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     md_metric_threshold_type = Column(String, nullable=False)
-    md_meytric_threshold_value = Column(Text, nullable=False)
+    md_metric_threshold_value = Column(Text, nullable=False)
     md_metric_threshold_failure_text = Column(Text)
     md_metric_threshold_action = Column(String)
     md_metric_threshold_action_parameters = Column(Text)

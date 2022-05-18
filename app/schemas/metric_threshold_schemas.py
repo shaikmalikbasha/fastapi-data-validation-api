@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 class CreateAndUpdateMetricThreshold(BaseModel):
     md_metric_threshold_type: str
-    md_meytric_threshold_value: str
+    md_metric_threshold_value: str
     md_metric_threshold_failure_text: Optional[str]
     md_metric_threshold_action: Optional[str] = "NOTIFICATION"
     md_metric_threshold_action_parameters: Optional[str] = settings.ADMIN_MAIL
@@ -16,7 +16,7 @@ class CreateAndUpdateMetricThreshold(BaseModel):
 
 
 class MetricThresholdResponse(CreateAndUpdateMetricThreshold):
-    id: int
+    id: Optional[int]
 
     class Config:
         orm_mode = True
