@@ -5,14 +5,11 @@ from app.schemas.metric_query_schemas import (
     CreateAndUpdateMetricQuery,
     MetricQueryResponse,
 )
-from app.services.metric_query_service import MdMetricQueryService
+from app.services.service_instances import metric_query_service
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 metric_query_router = APIRouter(prefix="/queries", tags=["MD_METRIC_QUERY"])
-
-
-metric_query_service = MdMetricQueryService()
 
 
 @metric_query_router.get("/", response_model=List[MetricQueryResponse], status_code=200)
