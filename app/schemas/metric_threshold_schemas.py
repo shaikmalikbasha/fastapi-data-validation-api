@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Optional
 
 from app.config.vars_config import settings
 from app.utils.constants import ACTIVE_STATUS
@@ -17,6 +17,7 @@ class CreateAndUpdateMetricThreshold(BaseModel):
 
 class MetricThresholdResponse(CreateAndUpdateMetricThreshold):
     id: Optional[int]
+    md_metric_query: Any
 
     class Config:
         orm_mode = True
