@@ -23,6 +23,9 @@ async def on_startup():
 
 @app.get("/", tags=["Default ROOT API"])
 async def index():
+    # result_proxy = engine.execute("SELECT * FROM md_metric_group").fetchall()
+    # data = list(map(lambda row: row._mapping, result_proxy))
+    # print(data)
     return {"msg": "Hello, World!", "appName": settings.APP_NAME}
 
 
