@@ -88,7 +88,7 @@ class MdMetricQuery(Base):
 
     md_metric_group_id = Column(Integer, ForeignKey("md_metric_group.id"))
     md_metric_threshold = relationship(
-        "MdMetricThreshold", back_populates="md_metric_query", uselist=False
+        "MdMetricThreshold", back_populates="md_metric_query"
     )
 
     def __repr__(self):
