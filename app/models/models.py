@@ -1,8 +1,17 @@
 from datetime import datetime
 
 from app.config.db_config import Base
-from app.utils.constants import SUCCESS_STATUS
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
+from app.utils.constants import PENDING_STATUS, SUCCESS_STATUS
+from sqlalchemy import (
+    Boolean,
+    Column,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    inspect,
+)
 from sqlalchemy.orm import relationship
 
 
@@ -36,15 +45,14 @@ class MdMetricInstance(Base):
     __tablename__ = "md_metric_instance"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    md_metric_instance_id = Column(Integer, nullable=False)
-    md_metric_schedule_id = Column(Integer, nullable=False)
+    md_metric_schedule_id = Column(Integer, nullable=True, default=0)
     md_metric_group_name = Column(Text, nullable=False)
     md_metric_instance_custom_paramaters = Column(Text, nullable=False)
-    md_metric_instance_status = Column(String, nullable=False)
-    md_metric_instance_failure_text = Column(Text, nullable=False)
-    md_metric_instance_query_attempt_count = Column(Integer)
-    md_metric_instance_query_complete_count = Column(Integer)
-    md_metric_instance_query_attempt_count = Column(Integer)
+    md_metric_instance_status = Column(String, nullable=False, default=PENDING_STATUS)
+    md_metric_instance_failure_text = Column(Text, nullable=True)
+    md_metric_instance_query_attempt_count = Column(Integer, default=0)
+    md_metric_instance_query_complete_count = Column(Integer, default=0)
+    md_metric_instance_query_pass_count = Column(Integer, default=0)
     md_metric_instance_date_time = Column(DateTime, default=datetime.now())
 
 
@@ -58,7 +66,12 @@ class MdMetricGroup(Base):
     md_metric_queries = relationship("MdMetricQuery")
 
     def __repr__(self):
-        return str(self.__dict__)
+        return str(
+            {
+                c.key: str(getattr(self, c.key))
+                for c in inspect(self).mapper.column_attrs
+            }
+        )
 
 
 class MdMetricQuery(Base):
