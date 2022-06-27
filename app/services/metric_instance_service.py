@@ -74,7 +74,7 @@ class MdMetricInstanceService:
 
         return "OK"
 
-    def metric_instance_param_parser(self, req_body):
+    def metric_instance_param_parser(self, req_body: dict) -> str:
         """Function to remove "<" and ">" symbol from the request body keys"""
         # req_body look like this
         # req_body = {'<BATCH_ID>': '123456', '<GROUP>': 'TEST_GROUP_NAME', '<ADDRESS_STATE>': 'OHIO'}

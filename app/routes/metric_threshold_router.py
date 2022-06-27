@@ -1,14 +1,16 @@
 from typing import List
+
 from app.config.db_config import get_db
 from app.schemas.metric_threshold_schemas import (
     CreateAndUpdateMetricThreshold,
     MetricThresholdResponse,
 )
-from app.services.service_instances import metric_threshold_service
+from app.services.metric_threshold_service import MdMetricThresholdService
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 metric_threshold_router = APIRouter(prefix="/thresholds", tags=["MD_METRIC_THRESHOLDS"])
+metric_threshold_service = MdMetricThresholdService()
 
 
 @metric_threshold_router.get(

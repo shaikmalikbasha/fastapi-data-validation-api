@@ -5,11 +5,12 @@ from app.schemas.metric_group_schemas import (
     CreateAndUpdateMetricGroup,
     MdMetricGroupResponse,
 )
-from app.services.service_instances import metric_group_service
+from app.services.metric_group_service import MdMetricGroupService
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 metric_group_router = APIRouter(prefix="/groups", tags=["MD_METRIC_GROUP"])
+metric_group_service = MdMetricGroupService()
 
 
 @metric_group_router.get(
